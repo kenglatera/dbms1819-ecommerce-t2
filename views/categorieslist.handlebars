@@ -48,7 +48,7 @@ a{
 
 
 .men, .women{
-  border-radius: 25px;
+  border-radius: 10px;
   border-style: solid;
   padding: 10px 10px 10px 10px;
   font-weight: bold;
@@ -59,8 +59,8 @@ a{
   border-color: gold;
   background-color: white;
   color: black;
-  font-size: 60px;
-  margin: 10px;
+  font-size: 40px;
+  margin: 5px;
   
 }
 .men-default:focus, .women-default:focus{
@@ -136,15 +136,17 @@ main-body .button1{
                           <a class="dropdown-item" href="/newarrival"> New Arrival </a>
                           <a class="dropdown-item" href="/men"> Men</a>
                           <a class="dropdown-item" href="/women"> Women</a>
-                            <div class="dropdown-divider"></div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="/categorieslist">Categories List</a>
+                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="/category/create">Create New Category</a>
             </div>    
             </div>
           </div>
     </div>
 </nav>
-<!---  Brand List  --->
 
+<br><br><br><br>
 <div class="main-body" align="center">
 <table>
        <tr><td> <a class="men men-default">NEW ARRIVAL</a> </td>
@@ -162,10 +164,9 @@ main-body .button1{
       </table>
 
 <div>
-{{#each brandnames}}
+{{#each categorynames}}
 
 <h4>{{this.name}}</h4>
-<h4>{{this.description}}</h4>
 
 
 {{/each}}
@@ -177,7 +178,7 @@ main-body .button1{
 </div>
 <!--- Off --->
 
-<br><br><br>
+<br><br><br> <br>
 
 
 <style>
