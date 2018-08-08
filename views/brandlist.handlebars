@@ -149,38 +149,31 @@ main-body .button1{
 
 <div class="main-body" align="center">
 <table>
-       <tr><td> <a class="men men-default">UNIQLO</a> </td>
-          <td> <a class="men men-default">FOREVER21</a></td>
-          <td> <a class="men men-default">ZARA</a> </td> </tr> 
-           <tr><tr><tr>  
-          <td> <a class="men men-default">LACOSTE</a></td>
+      <tr>
+       <td> <a class="men men-default">UNIQLO</a> </td>
+       <td> <a class="men men-default">FOREVER21</a></td>
+       <td> <a class="men men-default">ZARA</a> </td> 
+      </tr> 
+      <tr> 
+        <td> <a class="men men-default">LACOSTE</a></td>
         <td> <a class="men men-default">MANGO</a> </td>
-          <td> <a class="men men-default">BENCH</a></td> </tr></tr></tr> 
-           <tr> <td> <a class="men men-default">PENSHOPPE</a></td>
-           
-  <td> <a class="men men-default">NIKE</a> </td>
-          <td> <a class="men men-default">VANS</a></td>
-  <td> 
-      
-
+        <td> <a class="men men-default">BENCH</a></td> 
       </tr>
-       </tr>
-         </tr>
-        </tr>
+      <tr>
+        <td> <a class="men men-default">PENSHOPPE</a></td>
+        <td> <a class="men men-default">NIKE</a> </td>
+        <td> <a class="men men-default">VANS</a></td>
+      </tr>
+      {{#each brandnames}}
+      <tr>
+        <td> <a class="men men-default">{{this.name}}</a></td>
+        <td><h4>{{this.description}}</h4></td>
+      </tr>
+      {{/each}}
       </table>
 
-<div>
-{{#each brandnames}}
-
-<h4>{{this.name}}</h4>
-<h4>{{this.description}}</h4>
 
 
-{{/each}}
-</div>
-
-
-      <br><br>
 
 </div>
 <!--- Off --->
