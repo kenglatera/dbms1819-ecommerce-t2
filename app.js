@@ -5,6 +5,7 @@ const path = require('path');
 const { Client } = require('pg');
 //const bootstrap = require('bootstrap');
 const exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 // instantiate client using your DB configurations
 /*const client = new Client({
 	database: 'KART ENGLATERA',
@@ -41,6 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //
 app.engine('handlebars',exphbs ({defaultlayout:'main'}));
 app.set('view engine','handlebars');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.get('/', function(req, res) {
 	res.render('home', {
