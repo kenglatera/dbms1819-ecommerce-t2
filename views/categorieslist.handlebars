@@ -7,6 +7,97 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 
+<style>
+body{
+background-color:#F1C40F;
+}
+
+
+.main-body{
+  padding-top: 95px;
+  padding-bottom:0px;
+
+}
+.main-body table td{
+ padding-top:20px;
+ padding-bottom: 20px;
+ padding-right: 20px;
+ padding-left: 20px;
+
+}
+
+.main-body .selection table tr td img:hover{
+  border:5px solid gold;
+  border-radius: 10px;
+}
+
+.main-body .selection1 table tr td img:hover{
+  border:5px solid black;
+  border-radius: 10px;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+.men:hover{
+  border:5px solid black;
+  border-radius: 10px;
+}
+
+
+.men, .women{
+  border-radius: 25px;
+  border-style: solid;
+  padding: 10px 10px 10px 10px;
+  font-weight: bold;
+  
+}
+
+.men-default, .women-default {
+  border-color: gold;
+  background-color: white;
+  color: black;
+  font-size: 60px;
+  margin: 10px;
+  
+}
+.men-default:focus, .women-default:focus{
+  background-color: white;
+  color:white;
+  
+}
+.men-default:hover, .women-default:hover, .btn:hover{
+  text-decoration: underline;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: gold;
+    color: black;
+
+}
+
+main-body .button1{
+  border-radius: 10px;
+  border-style: solid;
+  padding: 80px 160px 80px 160px;
+  font-weight: bold;
+  
+}
+
+</style>
+
+
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#"> <h1> {{title}} </h1> </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,54 +137,44 @@
                           <a class="dropdown-item" href="/men"> Men</a>
                           <a class="dropdown-item" href="/women"> Women</a>
                             <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/categorieslist">Create New Category</a>
+                          <a class="dropdown-item" href="/category/create">Create New Category</a>
             </div>    
             </div>
           </div>
     </div>
 </nav>
+<!---  Brand List  --->
 
-<br>
-<style>
-body{
-background-color:#F1C40F;
-}
-.center_div{
-    margin:  auto;
-   margin-left: 500px;
-    width:80% 
-}
-</style>
-<br><br><br>
-
-<!--- Creating Brand Page --->
-
-<div class="container center_div">
-<form id="myForm">
- <div class="row" >
-  <div class="col-4">
-  <h2> Create New Category </h2>
-    <label> Category Name </label><br>
-    <input type="text" class="form-control" name="BrandName" placeholder="" required> <br>
-  <div>
-    <label> Description</label> <br>
-      <textarea class="form-control" name="Description" aria-label="With textarea" required></textarea>
-  </div>
-
-   </div>
-   </div>
-</form>
+<div class="main-body" align="center">
+<table>
+       <tr><td> <a class="men men-default">NEW ARRIVAL</a> </td>
+          <td> <a class="men men-default">MEN COLLECTION</a></td>
+          <td> <a class="men men-default">WOMEN COLLECTION</a> </td> </tr> 
+           <tr><tr><tr>  
+          
+  <td> 
       
-        <button type="button" class="btn btn-secondary" onclick="myFunction()" > CLEAR</button>
-        <button type="button" class="btn btn-primary" onclick="myFunction()" > SUBMIT</button>
-      
+
+      </tr>
+       </tr>
+         </tr>
+        </tr>
+      </table>
+
+<div>
+{{#each brandnames}}
+
+<h4>{{this.name}}</h4>
+<h4>{{this.description}}</h4>
+
+
+{{/each}}
 </div>
+
+
+      <br><br>
+
 </div>
-<script>
-function myFunction() {
-    document.getElementById("myForm").reset();
-}
-</script>
 <!--- Off --->
 
 <br><br><br>

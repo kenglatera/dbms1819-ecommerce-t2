@@ -89,6 +89,49 @@ app.get('/brand/create', function (req,res){
 
 // end of brand
 
+//start of category
+
+app.post('/categorieslist',function(req,res){
+	var values =[];
+	values=[req.body.categoryname];
+	console.log(req.body);
+	console.log(values);
+	client.query("INSERT INTO brands(name,description) VALUES ($1,$2)",values,(err,res)=>{
+		if (err){
+			console.log(err.stack)
+		}
+		else{
+			console.log('brand successfully added')
+		}
+	});
+	res.redirect('/brandlist');
+});
+
+
+app.get('/category/create', function (req,res){
+	res.render('create_category',{
+		title: 'THENEWUSED',
+	});
+});	
+
+app.get('/categorieslist', function(req, res) {
+	client.query('SELECT * FROM products_category',(req,data)=>{
+		var list = []
+		for (var i=1; i< data.rows.length+1; i++){
+		list.push(data.rows[i-1]);
+	}
+
+	res.render('categorieslist', {
+		title: 'THENEWUSED',
+		brandnames: list
+});
+
+
+	});
+		});
+
+//end of category
+
 app.get('/home', function(req, res) {
 	res.render('home', {
 		title: 'THENEWUSED',
@@ -128,13 +171,6 @@ app.get('/women',function(req,res){
 
 
 
-app.get('/create_category',function(req,res){
-	res.render('create_category',{
-		title: 'THENEWUSED',
-	});
-});	
-
-
 app.get('/create_products',function(req,res){
 	res.render('create_products',{
 		title: 'THENEWUSED',
@@ -142,12 +178,6 @@ app.get('/create_products',function(req,res){
 });	
 
 
-
-app.get('/categorieslist',function(req,res){
-	res.render('categorieslist',{
-		title: 'THENEWUSED',
-	});
-});	
 app.listen(process.env.PORT || 3000, function() {
 	console.log('Server started at port 3000');
 });
