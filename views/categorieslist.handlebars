@@ -59,7 +59,7 @@ a{
   border-color: gold;
   background-color: white;
   color: black;
-  font-size: 40px;
+  font-size: 50px;
   margin: 5px;
   
 }
@@ -146,36 +146,16 @@ main-body .button1{
     </div>
 </nav>
 
-<br><br><br><br>
+
 <div class="main-body" align="center">
 <table>
-       <tr><td> <a class="men men-default">NEW ARRIVAL</a> </td>
-          <td> <a class="men men-default">MEN COLLECTION</a></td>
-          <td> <a class="men men-default">WOMEN COLLECTION</a> </td> </tr> 
-           <tr><tr><tr>  
-          
-  <td> 
-      
-
+      {{#each categorynames}}
+      <tr>
+        <td> <a class="men men-default">{{this.name}}</a></td>
       </tr>
-       </tr>
-         </tr>
-        </tr>
-      </table>
+      {{/each}}
+</table>
 
-<div>
-{{#each categorynames}}
-
-<h4>{{this.name}}</h4>
-
-
-{{/each}}
-</div>
-
-
-      <br><br>
-
-</div>
 <!--- Off --->
 
 <br><br><br> <br>

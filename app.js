@@ -99,17 +99,16 @@ app.post('/categorieslist',function(req,res){
 	values=[req.body.categoryname];
 	console.log(req.body);
 	console.log(values);
-	client.query("INSERT INTO brands(name,description) VALUES ($1,$2)",values,(err,res)=>{
+	client.query("INSERT INTO products_category(name) VALUES ($1)",values,(err,res)=>{
 		if (err){
 			console.log(err.stack)
 		}
 		else{
-			console.log('brand successfully added')
+			console.log('category successfully added')
 		}
 	});
-	res.redirect('/brandlist');
+	res.redirect('/categorieslist');
 });
-
 
 app.get('/category/create', function (req,res){
 	res.render('create_category',{
@@ -126,7 +125,7 @@ app.get('/categorieslist', function(req, res) {
 
 	res.render('categorieslist', {
 		title: 'THENEWUSED',
-		brandnames: list
+		categorynames: list
 });
 
 
