@@ -21,7 +21,7 @@ background-color:#F1C40F;
 .main-body table td{
  padding-top:20px;
  padding-bottom: 20px;
- padding-right: 20px;
+ padding-right: 70px;
  padding-left: 20px;
 
 }
@@ -60,7 +60,7 @@ a{
   background-color: white;
   color: black;
   font-size: 60px;
-  margin: 10px;
+  margin: 90px;
   
 }
 .men-default:focus, .women-default:focus{
@@ -151,23 +151,28 @@ main-body .button1{
 <table>
       <tr>
        <td> <a class="men men-default">UNIQLO</a> </td>
+       <td><h3>Uniqlo Co., Ltd.is a Japanese casual wear designer, manufacturer and retailer.The company has been a wholly owned subsidiary of Fast Retailing Co., Ltd.The company operates in Japan and several other countries.</h3></td>
+      </tr> 
+       <tr>
        <td> <a class="men men-default">FOREVER21</a></td>
-       <td> <a class="men men-default">ZARA</a> </td> 
+       <td><h3>FOREVER 21 is an American fast fashion retailer headquartered in Los Angeles, California. Forever 21 began as the store called Fashion 21 with 900 square feet (84 m2) in Highland Park, Los Angeles, California in 1984</h3></td>
       </tr> 
       <tr> 
         <td> <a class="men men-default">LACOSTE</a></td>
-        <td> <a class="men men-default">MANGO</a> </td>
-        <td> <a class="men men-default">BENCH</a></td> 
+        <td><h3>Lacoste is a French clothing company, founded in 1933 by tennis player René Lacoste and André Gillier. It sells clothing, footwear, eyewear, leather goods, perfume, towels and watches .</h3></td>
       </tr>
       <tr>
-        <td> <a class="men men-default">PENSHOPPE</a></td>
         <td> <a class="men men-default">NIKE</a> </td>
+        <td><h3>Nike Inc. is an American multinational corporation that is engaged in the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment, accessories, and services</h3></td>
+      </tr>
+        <tr>
         <td> <a class="men men-default">VANS</a></td>
+        <td><h3>Vans is an American manufacturer of skateboarding shoes and related apparel, based in Costa Mesa, California, owned by VF Corporation.</td></h3>
       </tr>
       {{#each brandnames}}
       <tr>
         <td> <a class="men men-default">{{this.name}}</a></td>
-        <td><h4>{{this.description}}</h4></td>
+        <td><h3>{{this.description}}</h3></td>
       </tr>
       {{/each}}
       </table>
