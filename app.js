@@ -154,7 +154,7 @@ app.post('/products',function(req,res){
 
 app.get('/products', function(req, res) {
 	client.query('SELECT * FROM products',(req,data)=>{
-		var list = []
+		var list = [];
 		for (var i=1; i< data.rows.length+1; i++){
 		list.push(data.rows[i-1]);
 	}
@@ -174,6 +174,23 @@ app.get('/product/create', function (req,res){
 	});
 });	
 
+//productview
+app.get('/product/:idNew', function (req,res){ 
+	const idNew=req.params.idNew;
+
+		var list1 = [];
+		var list = [];
+	client.query("SELECT * FROM products where id="+idNew+" ",(req,data2)=>{
+		for (var i=0; i< data2.rowCount; i++){
+		list1[i] = data2.rows[i] ;
+		} list = list1;
+
+	 res.render('productview',{
+		title: 'THENEWUSED_products',
+		products: list[0]
+	});  
+});	
+	});	
 // end of products
 
 app.get('/home', function(req, res) {
