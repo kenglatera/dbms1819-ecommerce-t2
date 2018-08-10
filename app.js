@@ -110,11 +110,6 @@ app.post('/categorieslist',function(req,res){
 	res.redirect('/categorieslist');
 });
 
-app.get('/category/create', function (req,res){
-	res.render('create_category',{
-		title: 'THENEWUSED',
-	});
-});	
 
 app.get('/categorieslist', function(req, res) {
 	client.query('SELECT * FROM products_category',(req,data)=>{
@@ -131,6 +126,12 @@ app.get('/categorieslist', function(req, res) {
 
 	});
 		});
+
+app.get('/category/create', function (req,res){
+	res.render('create_category',{
+		title: 'THENEWUSED',
+	});
+});	
 
 //end of category
 
@@ -176,6 +177,18 @@ app.get('/women',function(req,res){
 app.get('/create_products',function(req,res){
 	res.render('create_products',{
 		title: 'THENEWUSED',
+	});
+});	
+
+app.get('/customers',function(req,res){
+	res.render('customers',{
+		title: 'CUSTOMERS',
+	});
+});	
+
+app.get('/orders',function(req,res){
+	res.render('orders',{
+		title: 'ORDERS',
 	});
 });	
 
