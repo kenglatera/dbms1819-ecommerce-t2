@@ -138,10 +138,10 @@ app.get('/category/create', function (req,res){
 // start of products
 app.post('/products',function(req,res){
 	var values =[];
-	values=[req.body.productname,req.body.description,req.body.tagline,req.body.price,,req.body.warranty,req.body.image];
+	values=[req.body.productname,req.body.description,req.body.tagline,req.body.price,req.body.warranty,req.body.image];
 	console.log(req.body);
 	console.log(values);
-	client.query("INSERT INTO products(product_name,product_description,tagline,price,warrant,images) VALUES ($1,$2,$3,$4,$5)",values,(err,res)=>{
+	client.query("INSERT INTO products(product_name,product_description,tagline,price,warranty,images) VALUES ($1,$2,$3,$4,$5,$6)",values,(err,res)=>{
 		if (err){
 			console.log(err.stack)
 		}

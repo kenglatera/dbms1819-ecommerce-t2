@@ -75,19 +75,67 @@ background-color: #138D75  ;
 <br>
 
 <!-- 1st pic-->
-<div class="row" align="center">
-  <div class="col-sm-4">
-<div class="card"  style="width: 18rem;">
-  <div class="card-body">
+<div class="column" align="center">
+  <div class="col-sm-12">
+<div class="card"  style="width: 18rem;" align="center">
+  <div class="card-body" align="center">
   	{{#each products}}
-  	<p>{{this.image}}</p>
+  	<img src="{{this.images}}">
   	<h3 class="card-text"><b>{{this.product_name}}</b></h3>
     <h5 class="card-title">Php{{this.price}}.00</h5>
     <p class="card-text">Description:{{this.product_description}}</p>
     <p>Tagline: "{{this.tagline}}"</p>
     <p>Warranty in months:{{this.warranty}}</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+  Add to Cart
+</button>
+
+<br><br>
     {{/each}}
+
  </div>
+ <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Checkout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<form>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Full Name (FN, MI, LN) </label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="  ">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Email address</label>
+    <input type="email" class="form-control" id="formGroupExampleInput2" placeholder=" ">
+  </div>
+   <div class="form-group">
+    <label for="formGroupExampleInput2">Address</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder=" ">
+  </div>
+   <div class="form-group">
+    <label for="formGroupExampleInput2">Contact Number</label>
+    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder=" ">
+  </div>
+</form>
+
+<p> Description:M1 COLLECTION</p>
+<p> Price: ₱1,450.00</p>
+ 
+<form class="form-inline">
+  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Quantity</label>
+  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</form>
+</div>
 
 
 
@@ -113,6 +161,9 @@ background-color: #138D75  ;
 
 
 <style>
+.card-body img{
+	width:200px;
+}
 .footer-outer{
   width: 100% height:100%;
   background-color: #343A40;
