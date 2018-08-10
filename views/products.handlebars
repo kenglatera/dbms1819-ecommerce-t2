@@ -82,10 +82,10 @@ background-color: #138D75  ;
   	{{#each products}}
   	<img src="{{this.images}}">
   	<h3 class="card-text"><b>{{this.product_name}}</b></h3>
-    <h5 class="card-title">Php{{this.price}}.00</h5>
-    <p class="card-text">Description:{{this.product_description}}</p>
-    <p>Tagline: "{{this.tagline}}"</p>
-    <p>Warranty in months:{{this.warranty}}</p>
+    <h5 class="card-title"><b>Price:</b> Php{{this.price}}.00</h5><br>
+    <p class="card-text"><b>Description: </b> {{this.product_description}}</p>
+    <p><b>Tagline: </b>" {{this.tagline}}"</p>
+    <p><b>Warranty :</b> {{this.warranty}} months</p>
     <button onclick="location.href='/product/{{this.id}}';" type="button" class="btn btn-primary" >Add to Cart</button>
 
 <br><br>
