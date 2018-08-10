@@ -75,57 +75,38 @@ background-color:#F1C40F;
 
 <!--- Creating Product Page --->
 
-<div class="container center_div">
 
-<form id="myForm">
+      
+<div class="container center_div">
+<form method="POST" action="/products">
  <div class="row" >
   <div class="col-4">
   <h2> Create New Product </h2>
-    <label> Product Name  </label><br>
-    <input type="text" class="form-control" name="Create-Product" placeholder="" id=""> <br>
-   <label> Product Price </label><br>
-    <input type="numbers" class="form-control" name="price" placeholder="" id="myInput"> <br>
-     <label> Category </label><br>
-  <select class="custom-select" id="myInput">
-  <option selected value="new-arrival"> New Arrival </option>
-  <option value="men"> Men </option>
-  <option value="women"> Women </option>
-</select>
-
-<label> Brand </label><br>
-  <select class="custom-select">
-  <option selected value="Uniqlo"> Uniqlo </option>
-  <option value="forever21"> Forever21</option>
-  <option value="Bench"> Bench </option>
-  <option value="Penshoppe"> Penshoppe </option>
-  <option value="Lacoste"> Lacoste </option>
-  <option value="mango"> Mango </option>
-  <option value="vans"> Vans </option>
-  <option value="Nike"> Nike </option>
-  <option value="Puma"> Puma </option>
-</select>
-
-
+  <br>
+    <label> Product Name </label><br>
+    <input type="text" class="form-control" name="productname" required> <br>
+    <label> Description </label><br>
+    <textarea type="text"  class="form-control" name="description" required> </textarea> <br>
+    <label> Tagline </label><br>
+    <input type="text" class="form-control" name="tagline" required> <br>
+    <label> Price </label><br>
+    <input type="number" class="form-control" name="price" required> <br>
+    <label> Warranty </label><br>
+    <input type="number" class="form-control" name="warranty" required> <br>
+    <label> Images </label><br>
+    <input type="text" class="form-control" name="image" required> <br>
   <div>
-    <label> Description</label> <br>
-      <textarea class="form-control" name="Description" aria-label="With textarea" id="myInput"></textarea>
-  </div>
+    
+    <button type="submit" class="btn btn-primary"> SUBMIT</button>
+     <br><br><br><br><br><br>
 
    </div>
    </div>
+  
 </form>
-      
-        <button type="button" class="btn btn-secondary" onclick="myFunction()" > CLEAR</button>
-        <button type="button" class="btn btn-primary" onclick="myFunction()" > SUBMIT</button>
-      
+       
 </div>
 </div>
-<script>
-function myFunction() {
-    document.getElementById("myForm").reset();
-}
-</script>
-<!--- Off --->
 
 <br><br><br>
 

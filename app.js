@@ -135,6 +135,47 @@ app.get('/category/create', function (req,res){
 
 //end of category
 
+// start of products
+app.post('/products',function(req,res){
+	var values =[];
+	values=[req.body.productname,req.body.description,req.body.tagline,req.body.price,,req.body.warranty,req.body.image];
+	console.log(req.body);
+	console.log(values);
+	client.query("INSERT INTO products(product_name,product_description,tagline,price,warrant,images) VALUES ($1,$2,$3,$4,$5)",values,(err,res)=>{
+		if (err){
+			console.log(err.stack)
+		}
+		else{
+			console.log('product successfully added')
+		}
+	});
+	res.redirect('/products');
+});
+
+app.get('/products', function(req, res) {
+	client.query('SELECT * FROM products',(req,data)=>{
+		var list = []
+		for (var i=1; i< data.rows.length+1; i++){
+		list.push(data.rows[i-1]);
+	}
+
+	res.render('products', {
+		title: 'PRODUCTS',
+		products: list
+});
+
+
+	});
+		});
+
+app.get('/product/create', function (req,res){
+	res.render('create_products',{
+		title: 'PRODUCTS',
+	});
+});	
+
+// end of products
+
 app.get('/home', function(req, res) {
 	res.render('home', {
 		title: 'THENEWUSED',
