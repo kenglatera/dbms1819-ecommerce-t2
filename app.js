@@ -76,7 +76,7 @@ app.get('/brandlist', function(req, res) {
 	}
 
 	res.render('brandlist', {
-		title: 'THENEWUSED',
+		title: 'THENEWUSED_brands',
 		brandnames: list
 });
 
@@ -86,7 +86,7 @@ app.get('/brandlist', function(req, res) {
 
 app.get('/brand/create', function (req,res){
 	res.render('create_brand',{
-		title: 'THENEWUSED',
+		title: 'THENEWUSED_brands',
 	});
 });	
 
@@ -119,7 +119,7 @@ app.get('/categorieslist', function(req, res) {
 	}
 
 	res.render('categorieslist', {
-		title: 'THENEWUSED',
+		title: 'THENEWUSED_categories',
 		categorynames: list
 });
 
@@ -129,7 +129,7 @@ app.get('/categorieslist', function(req, res) {
 
 app.get('/category/create', function (req,res){
 	res.render('create_category',{
-		title: 'THENEWUSED',
+		title: 'THENEWUSED_categories',
 	});
 });	
 
@@ -160,7 +160,7 @@ app.get('/products', function(req, res) {
 	}
 
 	res.render('products', {
-		title: 'PRODUCTS',
+		title: 'THENEWUSED_products',
 		products: list
 });
 
@@ -170,7 +170,7 @@ app.get('/products', function(req, res) {
 
 app.get('/product/create', function (req,res){
 	res.render('create_products',{
-		title: 'PRODUCTS',
+		title: 'THENEWUSED_products',
 	});
 });	
 
@@ -194,7 +194,7 @@ app.get('/api/products', function(req, res) {
 
 app.get('/newarrival',function(req,res){
 	res.render('newarrival',{
-		title: 'NEW ARRIVAL',
+		title: 'THENEWUSED_new arrival',
 		price: '1500'
 		
 	});
@@ -202,13 +202,13 @@ app.get('/newarrival',function(req,res){
 
 app.get('/men',function(req,res){
 	res.render('men',{
-		title: "MEN'S COLLECTION",
+		title: "THENEWUSED_men's collection",
 	});
 });		
 
 app.get('/women',function(req,res){
 	res.render('women',{
-		title: "WOMEN'S COLLECTION",
+		title: "THENEWUSED_women's collection",
 
 	});
 });	
@@ -217,19 +217,19 @@ app.get('/women',function(req,res){
 
 app.get('/create_products',function(req,res){
 	res.render('create_products',{
-		title: 'THENEWUSED',
+		title: 'THENEWUSED_products',
 	});
 });	
 
 app.get('/customers',function(req,res){
 	res.render('customers',{
-		title: 'CUSTOMERS',
+		title: 'THENEWUSED_customers',
 	});
 });	
 
 app.get('/orders',function(req,res){
 	res.render('orders',{
-		title: 'ORDERS',
+		title: 'THENEWUSED_orders',
 	});
 });	
 
