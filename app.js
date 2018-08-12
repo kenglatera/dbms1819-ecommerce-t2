@@ -194,6 +194,24 @@ app.get('/product/:idNew', function (req,res){
 // end of products
 
 
+//customers details
+app.get('/customers/:idNew', function (req,res){ 
+	const idNew=req.params.idNew;
+
+		var list1 = [];
+		var list = [];
+	client.query("SELECT * FROM customers where id="+idNew+" ",(req,data2)=>{
+		for (var i=0; i< data2.rowCount; i++){
+		list1[i] = data2.rows[i] ;
+		} list = list1;
+
+	 res.render('customers',{
+		title: 'THENEWUSED_customers',
+		customers: list[0]
+	});  
+});	
+	});	
+
 // start of customers
 app.post('/customers',function(req,res){
 	var values =[];
@@ -288,7 +306,7 @@ app.get('/customers',function(req,res){
 
 app.get('/orders',function(req,res){
 	res.render('orders',{
-		title: 'THENEWUSED_customers',
+		title: 'THENEWUSED_orders',
 	});
 });	
 

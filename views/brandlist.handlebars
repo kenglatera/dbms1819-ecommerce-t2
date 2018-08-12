@@ -151,12 +151,14 @@ main-body .button1{
     <div class="dropdown">
             <a class="btn btn-default" style="color:white;" id="Products_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Customers
-            </a>
             <div class="dropdown-menu" aria-labelledby="Customers">
                           <a class="dropdown-item" href="/customers">Customer Lists</a>
                            <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/orders">Customer Details</a>
-            </div>    
+                          <a class="dropdown-item" href="/customers/{{this.id}}">Customer Details</a>
+            </div> 
+          
+          <a style="color:white;" class="btn btn-default" href="/orders">Orders</a> 
+           </div>  
 </nav>
 <!---  Brand List  --->
 
