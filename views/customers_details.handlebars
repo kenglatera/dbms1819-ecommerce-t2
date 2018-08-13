@@ -16,31 +16,32 @@
   </button>
 
     <div style="text-align:right">
-      <a style="color:white;" class="btn btn-default" href="/home">Home</a> 
-    </div>
-      
+       <a style="color:white;" class="btn btn-default" href="/home">Home</a> </div>
       <div class="dropdown">
-            <a class="btn btn-default" style="color:white;" id="Products_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Products </a>
-        <div class="dropdown-menu" aria-labelledby="Products">
-            <a class="dropdown-item" href="/product/create"> Create New Product</a>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"> Update Products</a>
-          <div class="dropdown-divider"></div>
+            <a class="btn btn-default" style="color:white;" id="Products_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Products
+            </a>
+            <div class="dropdown-menu" aria-labelledby="Products">
+              <a class="dropdown-item" href="/product/create"> Create New Product</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"> Update Products</a>
+               <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/products">Products List</a>
-      </div>
-         </div>
+            </div>
           </div>
-
+          </div>
       <div class="dropdown">
-            <a class="btn btn-default" style="color:white;" id="Products_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Brands</a>
-      <div class="dropdown-menu" aria-labelledby="Brand">
-            <a class="dropdown-item" href="/brandlist"> Brand List </a>
-      <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/brand/create"> Create New Brand</a>
-      </div>
-      </div>
-      </div>
-          <div class="dropdown">
+            <a class="btn btn-default" style="color:white;" id="Products_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Brands
+            </a>
+            <div class="dropdown-menu" aria-labelledby="Brand">
+                          <a class="dropdown-item" href="/brandlist"> Brand List </a>
+              <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="/brand/create"> Create New Brand</a>
+            </div>
+          </div>
+           </div>
+      <div class="dropdown">
             <a class="btn btn-default" style="color:white;" id="Products_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Categories
             </a>
@@ -55,20 +56,20 @@
             </div>    
 
             </div>
-            </div>
-            </div>
-            <div class="dropdown">
+          </div>
+    </div>
+   <div class="dropdown">
             <a class="btn btn-default" style="color:white;" id="Products_dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Customers
             </a>
             <div class="dropdown-menu" aria-labelledby="Customers">
                           <a class="dropdown-item" href="/customers">Customer Lists</a>
                            <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/customers_details">Customer Details</a>
+                          <a class="dropdown-item" href="//customers_details">Customer Details</a>
             </div> 
           
           <a style="color:white;" class="btn btn-default" href="/orders">Orders</a> 
-           </div>
+           </div>   
 </nav>
 
 
@@ -76,49 +77,130 @@
 body{
 background-color:#F1C40F;
 }
+
+
+.main-body{
+  padding-top: 95px;
+  padding-bottom:0px;
+
+}
+.main-body table td{
+ padding-top:20px;
+ padding-bottom: 20px;
+ padding-right: 70px;
+ padding-left: 20px;
+
+}
+
+.main-body .selection table tr td img:hover{
+  border:5px solid gold;
+  border-radius: 10px;
+}
+
+.main-body .selection1 table tr td img:hover{
+  border:5px solid black;
+  border-radius: 10px;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+.men:hover{
+  border:5px solid black;
+  border-radius: 10px;
+}
+
+
+.men, .women{
+  border-radius: 15px;
+  border-style: solid;
+  padding: 5px 5px 5px 5px;
+  font-weight: bold;
+  
+}
+
+.men-default, .women-default {
+  border-color: gold;
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  margin: 30px;
+  
+}
+.men-default:focus, .women-default:focus{
+  background-color: white;
+  color:white;
+  
+}
+.men-default:hover, .women-default:hover, .btn:hover{
+  text-decoration: underline;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: gold;
+    color: black;
+
+}
+
+.inside{
+  color: black;
+  font-size: 16px;
+  margin: 30px;
+  
+
+
+}
+
+main-body .button1{
+  border-radius: 10px;
+  border-style: solid;
+  padding: 80px 160px 80px 160px;
+  font-weight: bold;
+  
+}
+
 </style>
-<br><br><br>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> 
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-       <center>
-      <img class="d-block w-60" src="tnu.jpg" alt="First slide"> </center>
-      <div class="carousel-caption d-none d-md-block">
-  
-  </div>
-    </div>
-    <div class="carousel-item">
-            <center>
-      <img class="d-block w-50" src="dp3.jpg" alt="Second slide"> </center>
-    <div class="carousel-caption d-none d-md-block">
-  
-  </div>
-    </div>
-    <div class="carousel-item">
-             <center>
-      <img class="d-block w-50" src="dp5.jpg" alt="Third slide"> </center>
-    <div class="carousel-caption d-none d-md-block">
-   
-  </div>
-    </div>
-  </div>
- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<br><br><br><br>
+<table>
+      <tr>
+        <td> <a class="men men-default">FIRST NAME</a></td>
+        <td> <a class="men men-default">LAST NAME</a></td>
+        <td> <a class="men men-default">EMAIL</a></td>
+        <td> <a class="men men-default">STREET</a></td>
+        <td> <a class="men men-default">MUNICIPALITY</a></td>
+        <td> <a class="men men-default">PROVINCE</a></td>
+        <td> <a class="men men-default">ZIPCODE</a></td>
+      </tr>
+        {{#each customers}}
+      <tr>
+        <td> <a class="inside">{{this.first_name}}</a></td>
+        <td> <a class="inside">{{this.last_name}}</a></td>
+        <td> <a class="inside">{{this.email}}</a></td>
+        <td> <a class="inside">{{this.street}}</a></td>
+        <td> <a class="inside">{{this.municipality}}</a></td>
+        <td> <a class="inside">{{this.province}}</a></td>
+        <td> <a class="inside">{{this.zipcode}}</a></td>
+      </tr>
+      {{/each}}
+</table>
 
-</div>
-<br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+<style>
+body{
+background-color:#F1C40F;
+}
+</style>
+
 <style>
 .footer-outer{
   width: 100% height:100%;

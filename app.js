@@ -197,7 +197,7 @@ app.get('/product/:idNew', function (req,res){
 // start of customers
 app.post('/customers',function(req,res){
 	var values =[];
-	values=[req.body.brandname,req.body.description];
+	values=[req.body.email,req.body.first_name,req.body.last_name,req.body.street,req.body.municipality,req.body.province,req.body.zipcode];
 	console.log(req.body);
 	console.log(values);
 	client.query("INSERT INTO customers(email,first_name,last_name,street,municipality,province,zipcode) VALUES ($1,$2,$3,$4,$5,$6,$7)",values,(err,res)=>{
@@ -227,11 +227,38 @@ app.get('/customers', function(req, res) {
 	});
 		});
 
-app.get('/customer/add', function (req,res){
-	res.render('customers',{
-		title: 'THENEWUSED_customers',
+
+app.post('/customers_details',function(req,res){
+	var values =[];
+	values=[req.body.email,req.body.first_name,req.body.last_name];
+	console.log(req.body);
+	console.log(values);
+	client.query("INSERT INTO customers(email,first_name,last_name) VALUES ($1,$2,$3)",values,(err,res)=>{
+		if (err){
+			console.log(err.stack)
+		}
+		else{
+			console.log('customers successfully added')
+		}
 	});
-});	
+	res.redirect('/customers_details');
+});
+
+app.get('/customers_details', function(req, res) {
+	client.query('SELECT * FROM customers',(req,data)=>{
+		var list = []
+		for (var i=1; i< data.rows.length+1; i++){
+		list.push(data.rows[i-1]);
+	}
+
+	res.render('customers_details', {
+		title: 'THENEWUSED_customers',
+		customers: list
+});
+
+
+	});
+		});
 
 // end of customers
 
