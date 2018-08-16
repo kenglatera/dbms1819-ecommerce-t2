@@ -15,6 +15,18 @@ var bodyParser = require('body-parser');
 	port: 5432
 
 */
+
+
+var user;
+var pass;
+var nodemailer = require('nodemailer');
+
+var id;
+var description;
+var idprice;
+var prod_name;
+var prod_price;
+
 const client = new Client({
 	database: 'ddanjjrmfktufr',
 	user: 'izhcgjbnymylig',
@@ -91,6 +103,11 @@ app.get('/brand/create', function (req,res){
 });	
 
 // end of brand
+
+
+
+
+
 
 //start of category
 
@@ -184,6 +201,7 @@ app.get('/product/:idNew', function (req,res){
 		for (var i=0; i< data2.rowCount; i++){
 		list1[i] = data2.rows[i] ;
 		} list = list1;
+		id = idNew;
 
 	 res.render('productview',{
 		title: 'THENEWUSED_products',
@@ -194,22 +212,153 @@ app.get('/product/:idNew', function (req,res){
 // end of products
 
 
+
+app.get('/success', function (req,res){
+	res.render('success',{
+		title: 'THENEWUSED_brands',
+	});
+});	
+
+
+
+app.get('/fail', function (req,res){
+	res.render('fail',{
+		title: 'THENEWUSED_brands',
+	});
+});	
+
 // start of customers
 app.post('/customers',function(req,res){
-	var values =[];
-	values=[req.body.email,req.body.first_name,req.body.last_name,req.body.street,req.body.municipality,req.body.province,req.body.zipcode];
+
 	console.log(req.body);
-	console.log(values);
-	client.query("INSERT INTO customers(email,first_name,last_name,street,municipality,province,zipcode) VALUES ($1,$2,$3,$4,$5,$6,$7)",values,(err,res)=>{
-		if (err){
-			console.log(err.stack)
-		}
-		else{
-			console.log('customers successfully added')
-		}
-	});
-	res.redirect('/customers');
+
+	var receivers = ['team2.dbms1819@gmail.com', req.body.email];
+
+	// client.query("INSERT INTO customers(email,first_name,last_name,street,municipality,province,zipcode) VALUES ($1,$2,$3,$4,$5,$6,$7)") //,values,(err,res)=>{
+	// 	if (err){
+	// 		console.log(err.stack)
+	// 	}
+	// 	else{
+	// 		console.log('customers successfully added')
+	// 	}
+	
+	   //	.then((results)=>{
+
+let mailOptions, transporter;
+transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'team2.dbms1819@gmail.com',
+        pass: 'database1819'
+    }
 });
+	console.log(req.body);
+	
+mailOptions = {
+        //from: req.body.FN+'  &lt; '+ req.body.LN +'   &lt;' + req.body.email +' &gt;', // sender address
+        from: 'team2.dbms1819@gmail.com', // list of receivers
+        to: receivers,
+        subject: 'ORDER DETAILS', // Subject line
+        text: "Order Details: \n Name:" + req.body.first_name + req.body.last_name +  "\n Email:" + req.body.email + "\n Product ID:" + id ,
+
+    };
+
+    console.log(mailOptions);
+
+ // send mail with defined transport object
+    transporter.sendMail(mailOptions, function (error, response) {
+        if (error) {
+				res.redirect('/fail');    
+				    }
+        // else
+        // {
+
+				client.query("INSERT INTO customers (email,first_name,last_name,street,municipality,province,zipcode) VALUES ('"+req.body.email+"','"+req.body.first_name+"','"+req.body.last_name+"','"+req.body.street+"','"+req.body.municipality+"','"+req.body.province+"','"+req.body.zipcode+"')") 
+					.then((result)=>{
+						res.redirect('/customers');  
+
+
+						// console.log(err.stack)
+						// 	res.redirect('/fail');    
+
+					})
+					.catch((err) => {
+						console.log('error',err);
+						res.send('Error!');
+						res.redirect('/fail');    
+
+					});
+
+
+    });
+   });
+
+
+	// 		 	else{
+	// 					console.log('customers successfully added')
+
+	// 			 	}
+
+	//}
+
+							
+					
+// mailOptions = {
+//         from: 'team2.dbms1819@gmail.com', // sender address
+//         to: req.body.email, // list of receivers
+//         subject: 'NEW ORDER', // Subject line
+//         text: "Order Details: \n Name:" + req.body.first_name + req.body.last_name  + "\n Email:" + req.body.email + "\n Product ID:" + id,
+ 
+//     };
+
+//     console.log(mailOptions);
+//  transporter.sendMail(mailOptions, function (error, response) {
+//         if (error) {
+// 				res.redirect('/fail');    
+// 				    }
+//         else
+//         {
+
+// 	client.query("INSERT INTO customers (email,first_name,last_name,street,municipality,province,zipcode) VALUES ('"+req.body.email+"','"+req.body.first_name+"','"+req.body.last_name+"','"+req.body.street+"','"+req.body.municipality+"','"+req.body.province+"','"+req.body.zipcode+"')")
+// 	if (err){
+// 			console.log(err.stack)
+// 				res.redirect('/fail');    
+
+// 		}
+// 	 	else{
+// 			console.log('customers successfully added')
+// 						res.redirect('/success');  
+
+// 	 	}
+// 					  	}
+
+
+// transporter.verify(function(error, success) {
+//    if (error) {
+//         console.log(error);
+//    } else {
+//         console.log('Server is ready to take our messages');
+//    }
+
+	
+//	
+/*
+FN = req.body.FN, 
+LN = req.body.LN,
+CNumber = req.body.contactnumber,
+Email = req.body.email,
+//ProdID = id,
+*/
+//console.log(values);
+
+ //  res.redirect('/customers');
+//});
+
+// });
+
+// });
 
 app.get('/customers', function(req, res) {
 	client.query('SELECT * FROM customers',(req,data)=>{
@@ -318,6 +467,93 @@ app.get('/orders',function(req,res){
 		title: 'THENEWUSED_orders',
 	});
 });	
+
+
+
+//POST ORDER
+app.post('/orderform', function (req,res){
+var idNew = req.params.id;
+/*
+FN = req.body.FN, 
+LN = req.body.LN,
+CNumber = req.body.contactnumber,
+Email = req.body.email,
+//ProdID = id,
+*/
+//console.log(values);
+
+	
+let mailOptions, transporter;
+transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'team2.dbms1819@gmail.com',
+        pass: 'database1819'
+    }
+});
+	console.log(req.body);
+	
+mailOptions = {
+        from: req.body.email,
+        //from: req.body.FN+'  &lt; '+ req.body.LN +'   &lt;' + req.body.email +' &gt;', // sender address
+        to: 'team2.dbms1819@gmail.com', // list of receivers
+        subject: 'ORDER DETAILS', // Subject line
+        text: "Order Details: \n Name:" + req.body.FN + req.body.LN + "\n Contact Number:" + req.body.contactnumber + "\n Email:" + req.body.email + "\n Product ID:" + id ,
+
+    };
+
+    console.log(mailOptions);
+
+ // send mail with defined transport object
+    transporter.sendMail(mailOptions, function (error, response) {
+        if (error) {
+				res.render('fail');    
+				    }
+       else{  /* KART... ETO UNG DI MAINSERT SA CUSTOMERS.. DAPAT MAINSERT SYA PAG NAGSUCCESS UNG PAG SEND SA EMAIL.. SALAMAT */  
+//       		console.log(req.body)
+//	        	client.query("INSERT INTO customers (first_name,last_name,street,municipality) VALUES ('"+req.body.FN+"','"+req.body.LN+"','"+req.body.address+"', '"+req.body.contactnumber"','"+req.body.email+"')");
+//
+					res.render('success');
+       }
+							
+					
+mailOptions = {
+        from: 'team2.dbms1819@gmail.com', // sender address
+        to: req.body.email, // list of receivers
+        subject: 'NEW ORDER', // Subject line
+        text: "Order Details: \n Name:" + req.body.FN + req.body.LN + "\n Contact Number:" + req.body.contactnumber + "\n Email:" + req.body.email + "\n Product ID:" + id,
+ 
+    };
+
+    console.log(mailOptions);
+ transporter.sendMail(mailOptions, function (error, response) {
+        if (error) {
+				res.render('fail');    
+				    }
+        else
+        {
+				res.render('success');   
+    	}
+
+
+transporter.verify(function(error, success) {
+   if (error) {
+        console.log(error);
+   } else {
+        console.log('Server is ready to take our messages');
+   }
+});
+
+    });
+});
+});
+
+
+
+
+
 
 
 app.listen(process.env.PORT || 3000, function() {
