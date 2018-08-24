@@ -380,6 +380,12 @@ app.get('/customers', function (req, res) {
   });
 });
 
+app.get('/admin', function (req, res) {
+  res.render('admin', {
+    title: 'WELCOME ADMIN'
+  });
+});
+
 app.get('/orders', function (req, res) {
   client.query('SELECT * FROM orders INNER JOIN products ON orders.product_id=products.id INNER JOIN customers ON orders.customer_id=customers.id ORDER BY order_date ASC', (req, data) => {
     console.log(data.rows);
