@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+ <a class="w3-bar-item w3-button" href="/product/create"> Create New Product</a>
+<a class="w3-bar-item w3-button" href="/productupdate"> Update Products</a>
+<a class="w3-bar-item w3-button" href="/brand/create"> Create New Brand</a>
+<a class="w3-bar-item w3-button" href="/brandlist"> Brand List </a>
+<a class="w3-bar-item w3-button" href="/category/create">Create New Category</a>
+<a class="w3-bar-item w3-button" href="/categorieslist">Categories List</a>
+<a class="w3-bar-item w3-button" href="/customers_details">Customer Details</a>
+<a class="w3-bar-item w3-button" href="/orders">Orders</a> 
+
+</div>
+
+<div id="main">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button id="openNav" class="w3-button w3-gray w3-xlarge" onclick="w3_open()">&#9776;</button>
+   <a class="navbar-brand" href="#"> <h1> {{title}} </h1> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <a style="color:white;" class="btn btn-default" href="/home">Home</a> 
+      <a style="color:white;" class="btn btn-default" href="/products">Products List</a>
+      <a style="color:#F1C40F;" class="btn btn-default" href="/adminpage"> Admin </a>
+</nav>
+</div>
+
+
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
+<br>
+<style>
+body{
+background-color:#F1C40F;
+}
+.center_div{
+    margin:  auto;
+   margin-left: 500px;
+    width:80% 
+}
+</style>
+<br><br><br>
+
+<!--- Creating Brand Page --->
+
+<div class="container center_div">
+<form method="POST" action="/categorieslist">
+ <div class="row" >
+  <div class="col-4">
+  <h2> Create New Category </h2>
+  <br>
+    <label> Category Name </label><br>
+    <input type="text" class="form-control" name="categoryname" id="category" required> <br>
+  <div>
+    
+    <button type="submit" class="btn btn-primary"> SUBMIT</button>
+     <br><br><br><br><br><br><br><br><br>
+
+   </div>
+   </div>
+  
+</form>
+       
+</div>
+</div>
+
+
+
+
+<style>
+.footer-outer{
+  width: 100% height:100%;
+  background-color: #343A40;
+}
+
+.footer-inner{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0px;
+  margin-bottom: 0%;
+  padding: 10px;
+  text-align: left;
+}
+
+.footer-inner .mediaicons img{
+  border:3px solid transparent;
+ }
+ 
+ .footer-inner .mediaicons img:hover{
+  border:3px solid gold;
+  border-radius: 100px;
+ }
+
+ .footer-inner table tr{
+  padding:30px;
+ }
+.footer-inner table tr #footerdetails a:hover{
+  text-decoration: underline;
+  color: gold;
+}
+.footer-inner table tr #footerdetails a:last-child{
+  text-decoration: none;
+}
+</style>
+<footer class="footer-outer">
+      <div class="footer-inner">
+        <table align="center">
+        <tr><td id="footerdetails">
+        <a style="color:white;" >ABOUT US </a>
+        <br>
+        <a style="color:white;" >CONTACT US</a>
+        <br>
+        <a style="color:white;" >COMMENTS AND SUGGESTIONS</a>
+        <br><br>
+        <a style="color:white;" >©Copyright 2018: Englatera_Kart_Mercado_Maryniel</a>
+        </td> 
+        
+        </td></tr>
+        </table>
+      </div>
+
+    </footer>
+
+
+

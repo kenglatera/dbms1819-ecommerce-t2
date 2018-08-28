@@ -53,20 +53,44 @@ app.get('/', function (req, res) {
   });
 });
 
+app.get('/adminpage', function (req, res) {
+  res.render('adminpage', {
+    title: 'THENEWUSED'
+  });
+});
+
 // start pf brand
 app.post('/brandlist', function (req, res) {
   var values = [];
+  var brandName;
+  brandName = req.body.brandname;
   values = [req.body.brandname, req.body.description];
   console.log(req.body);
   console.log(values);
-  client.query('INSERT INTO brands(name,description) VALUES ($1,$2)', values, (err, res) => {
-    if (err) {
-      console.log(err.stack);
+  client.query('SELECT name FROM brands', (req, data) => {
+    var list;
+    var exist = 0;
+    for (var i = 0; i < data.rows.length; i++) {
+      list = data.rows[i].name;
+      console.log(list);
+      if (list === brandName) {
+        exist = 1;
+      }
+    }
+    if (exist === 1) {
+      res.render('fail_brand', {// temporary html
+      });
     } else {
-      console.log('brand successfully added');
+      client.query('INSERT INTO brands(name, description) VALUES($1, $2)', values, (err, data) => {
+        if (err) {
+          console.log(err.stack);
+        } else {
+          console.log(data.rows[0]);
+        }
+      });
+      res.redirect('/brandlist');
     }
   });
-  res.redirect('/brandlist');
 });
 
 app.get('/brandlist', function (req, res) {
@@ -95,17 +119,35 @@ app.get('/brand/create', function (req, res) {
 
 app.post('/categorieslist', function (req, res) {
   var values = [];
+  var categoryName;
+  categoryName = req.body.categoryname;
   values = [req.body.categoryname];
   console.log(req.body);
   console.log(values);
-  client.query('INSERT INTO products_category(name) VALUES ($1)', values, (err, res) => {
-    if (err) {
-      console.log(err.stack);
+  client.query('SELECT name FROM products_category', (req, data) => {
+    var list;
+    var exist = 0;
+    for (var i = 0; i < data.rows.length; i++) {
+      list = data.rows[i].name;
+      console.log(list);
+      if (list === categoryName) {
+        exist = 1;
+      }
+    }
+    if (exist === 1) {
+      res.render('fail_category', {// temporary html
+      });
     } else {
-      console.log('category successfully added');
+      client.query('INSERT INTO products_category(name) VALUES($1)', values, (err, data) => {
+        if (err) {
+          console.log(err.stack);
+        } else {
+          console.log(data.rows[0]);
+        }
+      });
+      res.redirect('/categorieslist');
     }
   });
-  res.redirect('/categorieslist');
 });
 
 app.get('/categorieslist', function (req, res) {
@@ -123,7 +165,7 @@ app.get('/categorieslist', function (req, res) {
 });
 
 app.get('/category/create', function (req, res) {
-  res.render('create_category', {
+  res.render('create_category1', {
     title: 'THENEWUSED_categories'
   });
 });
@@ -132,18 +174,79 @@ app.get('/category/create', function (req, res) {
 
 // start of products
 app.post('/products', function (req, res) {
+//   var values = [];
+//   values = [req.body.productname, req.body.description, req.body.tagline, req.body.price, req.body.warranty, req.body.image];
+//   console.log(req.body);
+//   console.log(values);
+
+  //   var values1 = [];
+
+  // values1 = [req.body.productname];
+  //   console.log(req.body);
+  //   console.log(values1);
+  //    client.query(`SELECT product_name FROM products`, (req2, data10) => {
+  // var productlist;
+  // var exist = 0;
+  // console.log(values1);
+  // for (var i =0; i <data10.rows.length; i++) {
+  //   productlist = data10.rows[i].productname;
+  //   console.log(productlist);
+  //   if(productlist === values1) {
+  //     exist = 1;
+  //   }
+  // }
+  // if (exist = 1)
+  // {
+  //   res.render('fail_product');
+  // }
+  // else{
+  //   console.log(values);
+  //   client.query('INSERT INTO products(product_name,product_description,tagline,price,warranty,images) VALUES ($1,$2,$3,$4,$5,$6)', values, (err, res) => {
+  //     if (err) {
+  //       console.log(err.stack);
+  //     } else {
+  //       console.log('product successfully added');
+  //     }
+  //   });
+  //   res.redirect('/products');
+  // }
+  // });
+  // });
+
   var values = [];
-  values = [req.body.productname, req.body.description, req.body.tagline, req.body.price, req.body.warranty, req.body.image];
-  console.log(req.body);
-  console.log(values);
-  client.query('INSERT INTO products(product_name,product_description,tagline,price,warranty,images) VALUES ($1,$2,$3,$4,$5,$6)', values, (err, res) => {
-    if (err) {
-      console.log(err.stack);
+  var productName;
+  productName = req.body.productname;
+  values = [req.body.productname,
+    req.body.productdescription,
+    req.body.tagline,
+    req.body.price,
+    req.body.warranty,
+    req.body.images,
+    req.body.category_id,
+    req.body.brand_id];
+  client.query('SELECT product_name FROM products', (req, data) => {
+    var list;
+    var exist = 0;
+    for (var i = 0; i < data.rows.length; i++) {
+      list = data.rows[i].product_name;
+      if (list === productName) {
+        exist = 1;
+      }
+    }
+    if (exist === 1) {
+      res.render('fail_product', {
+      });
     } else {
-      console.log('product successfully added');
+      client.query('INSERT INTO products(product_name, product_description, tagline, price, warranty, images, category_id, brand_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8)', values, (err, res) => {
+        if (err) {
+          console.log(err.stack);
+        } else {
+          console.log(data.rows[0]);
+        }
+      });
+      res.redirect('/products');
     }
   });
-  res.redirect('/products');
 });
 
 app.get('/products', function (req, res) {
@@ -194,6 +297,12 @@ app.get('/success', function (req, res) {
 
 app.get('/fail', function (req, res) {
   res.render('fail', {
+    title: 'THENEWUSED_brands'
+  });
+});
+
+app.get('/productfailed', function (req, res) {
+  res.render('fail_product', {
     title: 'THENEWUSED_brands'
   });
 });
@@ -380,12 +489,6 @@ app.get('/customers', function (req, res) {
   });
 });
 
-app.get('/admin', function (req, res) {
-  res.render('admin', {
-    title: 'WELCOME ADMIN'
-  });
-});
-
 app.get('/orders', function (req, res) {
   client.query('SELECT * FROM orders INNER JOIN products ON orders.product_id=products.id INNER JOIN customers ON orders.customer_id=customers.id ORDER BY order_date ASC', (req, data) => {
     console.log(data.rows);
@@ -491,7 +594,7 @@ app.get('/productupdate', function (req, res) {
       list.push(data.rows[i - 1]);
     }
 
-    res.render('productupdate1', {
+    res.render('productupdate2', {
       title: 'THENEWUSED_products',
       products: list
     });
