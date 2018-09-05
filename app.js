@@ -295,6 +295,12 @@ app.get('/success', function (req, res) {
   });
 });
 
+app.get('/dashboard', function (req, res) {
+  res.render('dashboard', {
+    title: 'THENEWUSED'
+  });
+});
+
 app.get('/fail', function (req, res) {
   res.render('fail', {
     title: 'THENEWUSED_brands'
