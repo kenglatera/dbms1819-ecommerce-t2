@@ -158,40 +158,189 @@ background-color:white;
 <img src="dashboard.png" style="width:200px;height:200px;">
 <hr>
 
-<div class="container" >
-            <div class="row" >
-                <div class="col-lg-6" >
-                    <div class="icon_box_title" >
-                        <h2><h3>Top 10 Customers with most number of Orders<h3></h2>
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <h2><h3>Top 10 Most Ordered Products<h3></h2>
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <h2><h3>Top 3 Most Ordered Brands<h3></h2>
-                        <br><br><br><br><br>
+
+<!-- Most Orders -->
+<br>
+<div class="container">
+  <h3>Top 10 Costumers with Most Orders</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th class="text-center">
+          <label>Name</label>
+        </th>
+        <th class="text-center">
+          <label>Email</label>
+        </th>
+        <th class="text-center">
+          <label>Quantity</label>
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {{#each topTenCustomersWithMostOrders}}
+        <tr>
+          <td>{{this.first_name}}</td>
+          <td class="text-center">{{this.email}}</td>
+          <td class="text-center">{{this.number_of_orders}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<!-- Most Orders -->
+
+  <h3>Top 10 Customers with Highest Payment</h3>
+                         <table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th class="text-center">
+          <label>Name</label>
+        </th>
+        <th class="text-center">
+          <label>Email</label>
+        </th>
+        <th class="text-center">
+          <label>Total Payment</label>
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {{#each topTenCustomersWithHighestPayment}}
+        <tr>
+          <td class="text-center">{{this.first_name}} {{this.last_name}}</td>
+          <td class="text-center">{{this.email}}</td>
+          <td class="text-center">₱ {{this.total_payment}}</td>
+
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+<br><br>
+                        <h3>Top 10 Most Ordered Products</h3>
+                        <table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th class="text-center">
+          <label>Product Name</label>
+        </th>
+        <th class="text-center">
+          <label>Number of Orders</label>
+        </th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+           {{#each topTenMostOrderedProducts}}
+        <tr>
+          <td class="text-center">    {{this.product_name}}</td>
+          <td class="text-center">    {{this.number_of_orders}}</td>
+
+
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+<br><br>
+  <h3>Top 10 Least Ordered Products</h3>
+                        <table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th class="text-center">
+          <label>Product Name</label>
+        </th>
+        <th class="text-center">
+          <label>Number of Orders</label>
+        </th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+            {{#each topTenLeastOrderedProducts}}
+        <tr>
+          <td class="text-center">    {{this.product_name}}</td>
+          <td class="text-center">    {{this.number_of_orders}}</td>
+
+
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+<br><br>
+                        <h3>Top 3 Most Ordered Brands</h3>
+                        <table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th class="text-center">
+          <label>Brand Name</label>
+        </th>
+        <th class="text-center">
+          <label>Number of Orders</label>
+        </th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+          {{#each topThreeMostOrderedBrands}}
+        <tr>
+          <td class="text-center">    {{this.brand_name}}</td>
+          <td class="text-center">    {{this.number_of_orders}}</td>
+
+
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+<br><br>
+  <h3>Top 3 Most Ordered Categories</h3>
+                        <table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th class="text-center">
+          <label>Category Name</label>
+        </th>
+        <th class="text-center">
+          <label>Number of Orders</label>
+        </th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+          {{#each topThreeMostOrderedCategories}}
+        <tr>
+          <td class="text-center">    {{this.category_name}}</td>
+          <td class="text-center">    {{this.number_of_orders}}</td>
+
+
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
                     </div>
                     <br><br>
 
                 </div>
 
-                <div class="col-lg-6 icon_box_col">
-
-                    <!-- Icon Box Item -->
-                    <div class="icon_box_item" >
-                        <h2><h3>Top 10 Customers with highest Payment<h3></h2>
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <h2><h3>Top 10 Least Ordered Products<h3></h2>
-                        <br><br><br><br><br><br><br><br><br><br><br><br>
-                        <h2><h3>Top 3 Most Ordered Categories<h3></h2>
-                        <br><br><br><br><br>
-
-
-                    
-                </div>
-            </div>
                 </div>
 </div>
-
 
 
 <br><br><br><br>

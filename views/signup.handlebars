@@ -21,59 +21,244 @@
       <a style="color:white;" class="btn btn-default" href="/products">Products List</a>
       <a style="color:#F1C40F;" class="btn btn-default" href="/adminpage"> Admin </a>
       <a style="color:white;" class="btn btn-default" href="/login"> Login</a>
-      <a style="color:white;" class="btn btn-default" href="/signup"> Sign Up </a>
+      <a style="color:#85C1CE;" class="btn btn-default" href="/signup"> Sign Up </a>
     </div>
 </nav>
 
 
 <style>
 body{
-background-color:#F1C40F;
+background-color:white;
 }
 </style>
-<br><br><br>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> 
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-       <center>
-      <img class="d-block w-60" src="tnu.jpg" alt="First slide"> </center>
-      <div class="carousel-caption d-none d-md-block">
-  
-  </div>
-    </div>
-    <div class="carousel-item">
-            <center>
-      <img class="d-block w-50" src="dp3.jpg" alt="Second slide"> </center>
-    <div class="carousel-caption d-none d-md-block">
-  
-  </div>
-    </div>
-    <div class="carousel-item">
-             <center>
-      <img class="d-block w-50" src="dp5.jpg" alt="Third slide"> </center>
-    <div class="carousel-caption d-none d-md-block">
-   
-  </div>
-    </div>
-  </div>
- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 
-</div>
-<br><br><br>
 <style>
+
+.signup_button {
+  padding: 10px 15px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color: #85C1E9;
+  border: none;
+  border-radius: 10px;
+}
+
+.signup_button:hover {
+  
+  text-decoration: underline;
+  
+  }
+
+
+.cancel_button {
+  padding: 10px 15px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color: #85C1E9;
+  border: none;
+  border-radius: 10px;
+
+}
+
+.cancel_button:hover {
+  text-decoration: underline;
+}
+
+
+}
+</style>
+    <div>
+       <br><br><br><br>
+    <fieldset style="margin-left: 25%; margin-right: 25%; padding:30px; background-color: #343A40;  border-radius: 15px; color: #85C1E9;vertical-align: center;">
+  
+    <h1 style="font-family:arial;" align="center">
+    <strong style="color:white;">Sign Up</h1><br>
+    <p style="font-family:arial; color: #85C1E9"> *Please fill out all the fields.*</p>
+    <hr>
+
+    <form method="post" action="/signup">
+
+    <input required style=" border-radius: 5px;font-size: 21px;"  type ="text" name ="firstname" placeholder = "First Name"  size="56" maxlength="20">
+    <br><br>
+    <input required style=" border-radius: 5px;font-size: 21px;" type ="text" name ="lastname" placeholder = "Last Name"  size="56" maxlength="20"> 
+    <br><br>
+    <input required style=" border-radius: 5px;font-size: 21px;"type ="email" name ="email" placeholder = "Email"  size="56">
+    <br><br>
+    <input required style=" border-radius: 5px;font-size: 21px;"type ="password" name ="password_1" placeholder = "Password" size="56" maxlength="32">
+    <br><br>
+    
+    
+    </strong>
+    <br><center>
+    <button type="submit" name="reg_user" style="font-family:arial; height:30px;width:80px;">Sign Up</button> 
+    <button type="reset" style="font-family:arial; height:30;width:80px;">  Cancel </button> </center>
+    
+    <br><br><br>
+    <label style="font-family:arial;  font-size: 18px; color: white;"> Already Registered? Login </label> <a style="font-family:arial;  font-size: 18px; color: #85C1E9;" href="/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    login"> here! </a>
+    
+    </form>
+    </fieldset>
+    <br><br><br><br>
+      </div>
+    </body>
+  <style>
 .footer-outer{
   width: 100% height:100%;
   background-color: #343A40;
@@ -108,7 +293,7 @@ background-color:#F1C40F;
   text-decoration: none;
 }
 </style>
-<footer class="footer-outer">
+  <footer class="footer-outer">
       <div class="footer-inner">
         <table align="center">
         <tr><td id="footerdetails">
@@ -129,6 +314,3 @@ background-color:#F1C40F;
       </div>
 
     </footer>
-
-
-

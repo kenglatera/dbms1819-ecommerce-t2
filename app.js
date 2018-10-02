@@ -46,6 +46,7 @@ app.engine('handlebars', exphbs({defaultlayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use('/models', express.static(path.join(__dirname, '/models')));
 
 app.get('/', function (req, res) {
   res.render('home', {
@@ -295,12 +296,6 @@ app.get('/success', function (req, res) {
   });
 });
 
-app.get('/dashboard', function (req, res) {
-  res.render('dashboard', {
-    title: 'THENEWUSED'
-  });
-});
-
 app.get('/fail', function (req, res) {
   res.render('fail', {
     title: 'THENEWUSED_brands'
@@ -495,8 +490,14 @@ app.get('/customers', function (req, res) {
   });
 });
 
-app.get('/dashboard', function (req, res) {
-  res.render('dashboard', {
+app.get('/login', function (req, res) {
+  res.render('login', {
+    title: 'THENEWUSED'
+  });
+});
+
+app.get('/signup', function (req, res) {
+  res.render('signup', {
     title: 'THENEWUSED'
   });
 });
@@ -612,7 +613,37 @@ app.get('/productupdate', function (req, res) {
     });
   });
 });
+// dashboard top lists
 
+var Dashboard = require('./models/dashboard');
+
+app.get('/dashboard', function (req, res) { // product list
+  Dashboard.topTenCustomersWithMostOrders(client, function (topTenCustomersWithMostOrders) {
+    Dashboard.topTenCustomersWithHighestPayment(client, function (topTenCustomersWithHighestPayment) {
+      Dashboard.topTenMostOrderedProducts(client, function (topTenMostOrderedProducts) {
+        Dashboard.topTenLeastOrderedProducts(client, function (topTenLeastOrderedProducts) {
+          Dashboard.topThreeMostOrderedBrands(client, function (topThreeMostOrderedBrands) {
+            Dashboard.topThreeMostOrderedCategories(client, function (topThreeMostOrderedCategories) {
+              Dashboard.totalSalesInTheLastSevenDays(client, function (totalSalesInTheLastSevenDays) {
+                res.render('dashboard', {
+                  topTenCustomersWithMostOrders: topTenCustomersWithMostOrders,
+                  topTenCustomersWithHighestPayment: topTenCustomersWithHighestPayment,
+                  topTenMostOrderedProducts: topTenMostOrderedProducts,
+                  topTenLeastOrderedProducts: topTenLeastOrderedProducts,
+                  topThreeMostOrderedBrands: topThreeMostOrderedBrands,
+                  topThreeMostOrderedCategories: topThreeMostOrderedCategories,
+                  totalSalesInTheLastSevenDays: totalSalesInTheLastSevenDays
+
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+});
+// end of trial
 app.listen(process.env.PORT || 3000, function () {
   console.log('Server started at port 3000');
 });
